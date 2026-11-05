@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "boltclaw",
+  "version": "1.0.0",
+  "description": "Bolt Claw for AI agents: its hosted MCP server and documentation server, and skills for using the API and installing referral tracking.",
+  "author": {
+    "name": "Bolt Claw",
+    "url": "https://boltclaw.ai"
+  },
+  "homepage": "https://boltclaw.ai/docs/mcp",
+  "repository": "https://github.com/SparkleOfficial/boltclaw-agent-kit",
+  "license": "MIT",
+  "keywords": ["social-media", "link-in-bio", "referrals", "mcp", "api"]
+}

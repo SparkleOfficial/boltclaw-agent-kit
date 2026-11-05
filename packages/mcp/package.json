@@ -1,0 +1,42 @@
+{
+  "name": "@boltclaw/mcp",
+  "version": "1.0.0",
+  "description": "Bolt Claw's hosted MCP server for MCP clients that only start local (stdio) servers: schedule social posts, answer comments and DMs, and run link-in-bio pages and referral programs.",
+  "type": "module",
+  "bin": {
+    "boltclaw-mcp": "bin/boltclaw-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "homepage": "https://boltclaw.ai/docs/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SparkleOfficial/boltclaw-agent-kit.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/SparkleOfficial/boltclaw-agent-kit/issues"
+  },
+  "license": "MIT",
+  "author": "Bolt Claw (https://boltclaw.ai)",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "boltclaw",
+    "social-media",
+    "link-in-bio",
+    "referrals"
+  ],
+  "mcpName": "ai.boltclaw/boltclaw"
+}
