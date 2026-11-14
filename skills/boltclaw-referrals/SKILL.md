@@ -4,12 +4,12 @@ description: "Install Bolt Claw referral tracking in a product's own code: captu
 license: MIT
 metadata:
   source: "https://boltclaw.ai/docs/referrals/install.md"
-  api-version: "1.35.0"
+  api-version: "1.52.0"
 ---
 
 # Install Bolt Claw referrals (for coding agents)
 
-Version 1.35.0. You are working in a merchant's own code. They run a referral program on
+Version 1.52.0. You are working in a merchant's own code. They run a referral program on
 Bolt Claw and asked you to connect their product to it. The prompt that sent you here gave you the
 program's id and the stack they use. It did not give you an API key, and you must not ask for one
 in the conversation.
@@ -102,6 +102,12 @@ curl -X POST https://api.boltclaw.ai/v1/referrals/conversions \
 
 Leave `referral` out when there is no `bc_ref` cookie. If the product only takes sign-ups at
 checkout, skip this step.
+
+A code the person types into the product (an "Enter a referral code" field, or the product's own
+AI assistant or MCP server, where nobody clicks a link) is reported the same way, with
+`"entry":"typed"` in `referral` and, inside an AI assistant, `"surface":"ai_assistant"`; and with
+what the product's own sign-in page saw as `customer.signup_ip`, `customer.signup_user_agent` and
+`customer.country`, so a code with no click can still be judged. Never send the address of a request that came through an AI assistant or any other server: send what your own sign-in page saw.
 
 ## 4. Carry the referral to checkout
 
