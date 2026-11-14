@@ -4,12 +4,12 @@ description: "Install Bolt Claw referral tracking in a product's own code: captu
 license: MIT
 metadata:
   source: "https://boltclaw.ai/docs/referrals/install.md"
-  api-version: "1.52.0"
+  api-version: "1.53.0"
 ---
 
 # Install Bolt Claw referrals (for coding agents)
 
-Version 1.52.0. You are working in a merchant's own code. They run a referral program on
+Version 1.53.0. You are working in a merchant's own code. They run a referral program on
 Bolt Claw and asked you to connect their product to it. The prompt that sent you here gave you the
 program's id and the stack they use. It did not give you an API key, and you must not ask for one
 in the conversation.

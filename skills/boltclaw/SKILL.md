@@ -4,7 +4,7 @@ description: "Use Bolt Claw (social media scheduling and inbox, comment-to-DM au
 license: MIT
 metadata:
   source: "https://boltclaw.ai/skill.md"
-  api-version: "1.52.0"
+  api-version: "1.53.0"
 ---
 
 # Bolt Claw
@@ -40,6 +40,9 @@ made by the server and never passes through the conversation. Signing out revoke
 **2. MCP, with a key.** The same endpoint accepts `Authorization: Bearer bc_live_...`, as
 does `https://boltclaw.ai/api/mcp`.
 
+In Claude or ChatGPT, use the listed app instead: `https://mcp.boltclaw.ai/apps`, the same server with
+one tool per task and nothing that moves money or makes a credential. Claude: add https://mcp.boltclaw.ai/apps as a custom connector; ChatGPT: add https://mcp.boltclaw.ai/apps as an app in developer mode.
+
 **3. REST.** `https://api.boltclaw.ai/v1` (`https://boltclaw.ai/api/v1` is an alias; use the first), with the person's own key:
 
 ```bash
@@ -57,6 +60,13 @@ live. `GET /workspace` names the organisation. An MCP connection reaches one per
 the person approved, and tools take a `workspace` argument only because the connection holds
 a separate key for each.
 
+**"Does anything need me?"** Read `GET /notices` (the tool `list_notices`) first: every warning
+the dashboard shows, for every program the key reaches (and its keys and webhook endpoints, with
+`keys:read` or `webhooks:read`), each with a fixed `code`, a `sentence`, when it began and the
+`dashboard_url` that fixes it. Pass the `checked_at` of your last read as `since` and tell the
+person only the notices whose `new` is true, then the rest as still open; repeat each sentence
+as it is, and send them to its `dashboard_url` to fix it. It changes nothing.
+
 ## The rules that are not negotiable
 
 1. **A `404` means it is not yours.** A resource belonging to another workspace answers
@@ -73,7 +83,8 @@ a separate key for each.
    assistant holds (the MCP sign-in, the CLI's device sign-in) carries no `keys:write`,
    `webhooks:write` or `referrals:integrations`, and the database refuses them at sign-in and
    on every request. Asked to set up keys, webhook endpoints or a billing connection, propose
-   them as a setup plan (`POST /v1/setup-plans`, `create_setup_plan`, scope `setup:propose`):
+   them as a setup plan (`POST /v1/setup-plans`, scope `setup:propose`; a tool of its own on the
+   full MCP catalog, while the listed app at `/apps` leaves setup to the dashboard):
    it answers 428 with a link; give the person the link, never ask them to paste a secret into
    the chat. Approving makes everything as theirs and shows them the secrets once; your retry
    with the approval id reads ids, names and prefixes, never a secret. Rotating or revoking a
@@ -142,4 +153,4 @@ A product whose users connect it to you through its own MCP server may offer two
 - `https://boltclaw.ai/auth.md` - the three ways to get a credential, and how each one ends
 - `https://boltclaw.ai/docs/<page>.md` - any page as markdown; add `.md`, or send `Accept: text/markdown`
 - `https://boltclaw.ai/docs/mcp-server` - an MCP server over these pages, no key needed
-- `https://boltclaw.ai/openapi.json` - the specification, version 1.52.0
+- `https://boltclaw.ai/openapi.json` - the specification, version 1.53.0
